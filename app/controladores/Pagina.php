@@ -6,6 +6,7 @@
         }
 
         public function index(){
+            var_dump($this->modelo('Docente')->Read(2));
 			$this->vista('home', NULL);	
         }
 
