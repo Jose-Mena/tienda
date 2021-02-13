@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap'); 
+
+*{ 
+    margin: 0;
+    padding: 0;
+    font-family: 'Hammersmith One', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #9d233e, #927a2a);
+}
+
+li,a,button{
+    text-decoration: none;
+    color: #fff;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.container{
+    background-color: rgba(252, 252, 252, 0.178);
+    position: relative;
+    width: 100%;
+    height:auto;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row-reverse;
+    list-style: none;
+    text-align: center;
+}
+.nav-links li {
+    padding: .5rem 1rem;
+}
+
+.nav-links li a{
+    transition: .3s;
+    position: relative;
+}
+
+.nav-links li a:hover{
+    color:#ced6e0;
+}
+
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left:0;
+    width:0%;
+    height:4px;
+    border-radius: 50px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+    transition: .3s ease;
+}
+
+.nav-links li a:hover::before{
+    width:100%;
+}
+
+.cta{
+    padding: .5rem 2rem;
+    background-color: #927a2a;
+    border:none;
+    border-radius: 50px;
+    transition: .3s ease;
+}
+
+.cta:hover{
+    background-color:#fff;
+    color:#927a2a;
+
+}
+
+.logo{
+    font-size: 1.5em;
+    transition:.3s;
+    position: relative;
+}
+
+.logo:hover{
+    color:#927a2a;
+}
