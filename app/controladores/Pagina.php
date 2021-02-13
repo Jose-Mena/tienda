@@ -6,31 +6,29 @@
         }
 
         public function index(){
-            var_dump($this->modelo('Docente')->Read(2));
-			$this->vista('home', NULL);	
+            if(isset($_SESSION['usuario'])){
+               $datos=array(
+                   'nombre'=>$_SESSION['usuario']->nombre.' '.$_SESSION['usuario']->apellido
+               );
+            }else{
+                $datos=false;
+            }
+			$this->vista('home', $datos);	
         }
 
         public function login(){
-			$this->vista('login', NULL);	
-        }
-
-        public function home(){
-            if(!isset($_SESSION['sessionvotante']) || !$_SESSION['sessionvotante']){
-                if(!isset($_SESSION['sessionvotante'])){
-                    $_SESSION['sessionvotante']=false;
-                }
-                header('Location: '.RUTA_URL);
+            if(!isset($_SESSION['usuario'])){
+                $this->vista('login', NULL);
             }else{
-                $this->vista('votaciones/home', NULL);
-            }
-				
+                header('Location: '.RUTA_URL);
+            }	
         }
 
         public function logout(){
             session_unset();
             session_destroy();
 
-            header('Location: '.RUTA_URL.'');
+            header('Location: '.RUTA_URL);
         }
     }
 ?>

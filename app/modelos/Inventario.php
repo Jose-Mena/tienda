@@ -1,6 +1,6 @@
 <?php 
 
-	class Docente{
+	class Inventario{
 		private $db;
 
 		public function __construct(){
@@ -8,7 +8,8 @@
 		}
 
 		public function ReadAll(){
-			$this->db->query("SELECT * FROM inventario");
+			$this->db->query("SELECT nombre, precio FROM inventario
+							WHERE cantidad>0");
 			$R = $this->db->registros();
 			if($R==[]){
 				return false;
@@ -22,7 +23,7 @@
 			$this->db->bind(':id',$Id);
 			return $this->db->registro();
 		}
-		
+		/*
 		public function Create($datos){
 
 			$this->db->query("INSERT INTO docentes (nombre, apellido, imagen, correo) VALUES (:nombre, :apellido, :imagen, :correo)");
@@ -69,6 +70,6 @@
 			$archivoJ=fopen(RUTA_APP.'/data/docentes.json', 'w');
 				fwrite($archivoJ, $variableJ);
 			fclose($archivoJ);
-		}
+		}*/
 	}
 ?>

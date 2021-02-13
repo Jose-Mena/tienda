@@ -14,6 +14,11 @@
                     </li>
                 </ul>
             </nav>
+<?php if($datos):?>
+            <a><?php echo $datos['nombre'] ?></a>
+            <a class="cta" href="<?php echo RUTA_URL ?>/logout">Salir</a>
+<?php else:?>
             <a class="cta" href="<?php echo RUTA_URL ?>/login">Ingreso</a>
+<?php endif; ?>
         </div>
     </header>
