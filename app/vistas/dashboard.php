@@ -12,7 +12,7 @@
                 <li class="list-item">Productos</li>
                 <li class="list-item">Productos Terminados</li>
                 <li class="titulo-item">Preferencias</li>
-                <li class="list-item"><a class="cta" href="<?php echo RUTA_URL?>/logout">Cerrar Sesion</a></li>
+                <li class="list-item c"><a class="cta" href="<?php echo RUTA_URL?>/logout">Cerrar Sesion</a></li>
             </ul>
         </div>
         <div class="cuerpo">

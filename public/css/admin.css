@@ -37,6 +37,6 @@ li.list-item{
     cursor: pointer;
 }
 
-li.selected{
+.list-item.selected, .list-item:hover:not(.c){
     background-color: #9d233e;
 }
