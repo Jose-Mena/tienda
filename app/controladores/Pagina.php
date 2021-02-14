@@ -27,8 +27,8 @@
         public function logout(){
             session_unset();
             session_destroy();
-
-            header('Location: '.RUTA_URL);
+            header('Location: '.RUTA_URL.'/login');
         }
+
     }
 ?>

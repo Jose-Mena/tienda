@@ -7,8 +7,24 @@
 			$this->db = new Base;
 		}
 
-		public function ReadAll(){
-			$this->db->query("SELECT nombre, precio FROM inventario
+		public function registro($nombre, $precio, $cantidad){
+
+			$this->db->query("INSERT INTO inventario (nombre, precio, cantidad) 
+							VALUES (:nombre, :precio, :cantidad)");
+
+			$this->db->bind(':nombre', $nombre);
+			$this->db->bind(':precio', $precio);
+			$this->db->bind(':cantidad', $cantidad);
+
+			if ($this->db->execute()) {
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function productos(){
+			$this->db->query("SELECT id, nombre, precio, cantidad FROM inventario
 							WHERE cantidad>0");
 			$R = $this->db->registros();
 			if($R==[]){
@@ -23,24 +39,8 @@
 			$this->db->bind(':id',$Id);
 			return $this->db->registro();
 		}
-		/*
-		public function Create($datos){
 
-			$this->db->query("INSERT INTO docentes (nombre, apellido, imagen, correo) VALUES (:nombre, :apellido, :imagen, :correo)");
 
-			$this->db->bind(':nombre', $datos['nombre']);
-			$this->db->bind(':apellido', $datos['apellido']);
-			$this->db->bind(':imagen', $datos['imagen']);
-			$this->db->bind(':correo', $datos['correo']);
-
-			if ($this->db->execute()) {
-				$this->actualizarDocente();
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
 
 		public function Delete($Id){
 			$d=$this->Read($Id);

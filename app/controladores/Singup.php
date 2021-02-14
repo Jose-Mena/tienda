@@ -31,6 +31,7 @@
             if($res){
                 if( $_POST['correo']==$res->correo){
                     $_SESSION['usuario']=$res;
+                    $_SESSION['carrito']=[];
                     $json = json_encode(array('success'=>true));
                 }else{
                     $json = json_encode(array('success'=>false, 'mensaje'=>'El correo no corresponde a la identificación'));
