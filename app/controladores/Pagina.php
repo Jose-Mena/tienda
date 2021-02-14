@@ -6,10 +6,8 @@
         }
 
         public function index(){
-            if(isset($_SESSION['usuario'])){
-               $datos=array(
-                   'nombre'=>$_SESSION['usuario']->nombre.' '.$_SESSION['usuario']->apellido
-               );
+            if(isset($_SESSION['cliente'])){
+               $datos['cliente']=$_SESSION['cliente']->nombre.' '.$_SESSION['cliente']->apellido;
             }else{
                 $datos=false;
             }
@@ -17,11 +15,27 @@
         }
 
         public function login(){
-            if(!isset($_SESSION['usuario'])){
+            if(!isset($_SESSION['cliente'])){
                 $this->vista('login', NULL);
             }else{
                 header('Location: '.RUTA_URL);
             }	
+        }
+
+        public function admin(){
+            if(!isset($_SESSION['admin'])){
+                $this->vista('admin', NULL);
+            }else{
+                header('Location: '.RUTA_URL.'/dashboard');
+            }
+        }
+
+        public function dashboard(){
+            if(isset($_SESSION['admin'])){
+                $this->vista('dashboard', NULL);
+            }else{
+                header('Location: '.RUTA_URL.'/admin');
+            }
         }
 
         public function logout(){

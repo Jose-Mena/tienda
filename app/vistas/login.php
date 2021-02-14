@@ -1,8 +1,8 @@
-<?php include_once(RUTA_APP.'/vistas/header.php')?>
+<?php include_once(RUTA_APP.'/vistas/componentes/header.php')?>
     <link rel="stylesheet" href="<?php echo RUTA_URL?>/css/login.css">
 </head>
 <body>
-<?php include_once(RUTA_APP.'/vistas/navbar.php')?>
+<?php include_once(RUTA_APP.'/vistas/componentes/navbar.php')?>
 
     <div id="login" class="login-page"> 
         <h1>Login</h1> 

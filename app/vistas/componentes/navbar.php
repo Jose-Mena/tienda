@@ -15,7 +15,7 @@
                 </ul>
             </nav>
 <?php if($datos):?>
-            <a><?php echo $datos['nombre'] ?></a>
+            <a><?php echo $datos['cliente'] ?></a>
             <a class="cta" href="<?php echo RUTA_URL ?>/logout">Salir</a>
 <?php else:?>
             <a class="cta" href="<?php echo RUTA_URL ?>/login">Ingreso</a>

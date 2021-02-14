@@ -14,6 +14,14 @@
 			return $this->db->registro();
 		}
 
+		public function correo($correo){
+			$this->db->query("SELECT correo 
+								FROM clientes 
+								WHERE correo=:c");
+			$this->db->bind(':c',$correo);
+			return $this->db->registro();
+		}
+
 		public function registro($nombre, $apellido, $identificacion, $correo, $celular){
 			$this->db->query("INSERT INTO clientes (nombre, apellido, identificacion, correo, celular)
 								VALUES (:nombre, :apellido, :identificacion, :correo, :celular)");
