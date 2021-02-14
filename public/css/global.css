@@ -85,7 +85,6 @@ header{
 .cta:hover{
     background-color:#fff;
     color:#927a2a;
-
 }
 
 .logo{
@@ -96,4 +95,46 @@ header{
 
 .logo:hover{
     color:#927a2a;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form input{
+    width: 250px;
+    height: 35px;
+    margin: 8px;
+    background: rgb(218, 218, 218);
+    border: none;
+    padding-left: 10px;
+    outline: none;
+    transition: all .4s;
+}
+
+form input[type="file"]{
+    padding-top: 7px;
+}
+
+form input:focus {
+	background: rgb(194, 194, 194);
+}
+
+form .btn {
+	width: 250px;
+	height: 35px;
+	margin: 8px;
+	background: #927a2a;
+	color: #e2e2e2;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: all .4s;
+}
+
+form .btn:hover {
+	background: #9d233e;
 }

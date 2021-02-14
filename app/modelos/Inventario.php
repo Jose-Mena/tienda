@@ -7,14 +7,15 @@
 			$this->db = new Base;
 		}
 
-		public function registro($nombre, $precio, $cantidad){
+		public function registro($nombre, $precio, $cantidad, $imagen){
 
-			$this->db->query("INSERT INTO inventario (nombre, precio, cantidad) 
-							VALUES (:nombre, :precio, :cantidad)");
+			$this->db->query("INSERT INTO inventario (nombre, precio, cantidad, imagen) 
+							VALUES (:nombre, :precio, :cantidad, :imagen)");
 
 			$this->db->bind(':nombre', $nombre);
 			$this->db->bind(':precio', $precio);
 			$this->db->bind(':cantidad', $cantidad);
+			$this->db->bind(':imagen', $imagen);
 
 			if ($this->db->execute()) {
 				return true;
@@ -24,7 +25,7 @@
 		}
 
 		public function productos(){
-			$this->db->query("SELECT id, nombre, precio, cantidad FROM inventario
+			$this->db->query("SELECT id, nombre, precio, cantidad, imagen FROM inventario
 							WHERE cantidad>0");
 			$R = $this->db->registros();
 			if($R==[]){
@@ -34,42 +35,19 @@
 			}
 		}
 
-		public function Read($Id){
-			$this->db->query("SELECT id FROM inventario WHERE id=:id");
+		public function producto($Id){
+			$this->db->query("SELECT nombre, precio, cantidad, imagen FROM inventario
+						WHERE id=:id");
 			$this->db->bind(':id',$Id);
 			return $this->db->registro();
 		}
 
-
-
-		public function Delete($Id){
-			$d=$this->Read($Id);
-
-			$this->db->query("DELETE FROM docentes WHERE id=:id");
-			$this->db->bind(':id', $Id);
-
-			$this->db->execute();
-			$this->actualizarDocente();
-
-			if (!$this->Read($Id)) {
-				return $d->imagen;
-			}
-			else{
-				return true;
-			}
+		public function actualizarCantidad($Id,$cantidad){
+			$this->db->query("UPDATE inventario SET cantidad=:cantidad
+						WHERE id=:id");
+			$this->db->bind(':id',$Id);
+			$this->db->bind(':cantidad',$cantidad);
+			return $this->db->registro();
 		}
-
-		public function actualizarDocente(){
-			$D = $this->ReadAll();
-			if(!$D){
-				$D=[];
-			}
-
-			$variableJ=json_encode($D);
-
-			$archivoJ=fopen(RUTA_APP.'/data/docentes.json', 'w');
-				fwrite($archivoJ, $variableJ);
-			fclose($archivoJ);
-		}*/
 	}
 ?>

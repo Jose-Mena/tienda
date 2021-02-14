@@ -6,10 +6,9 @@
         }
 
         public function index(){
+            $datos['productos'] = $this->modelo('Inventario')->productos();
             if(isset($_SESSION['cliente'])){
                $datos['cliente']=$_SESSION['cliente']->nombre.' '.$_SESSION['cliente']->apellido;
-            }else{
-                $datos=false;
             }
 			$this->vista('home', $datos);	
         }
@@ -41,6 +40,8 @@
         public function logout(){
             session_unset();
             session_destroy();
+            setcookie('carrito', serialize([]), time() + (60 * 60));
+            unset($_COOKIE["carrito"]);
             header('Location: '.RUTA_URL.'/login');
         }
 

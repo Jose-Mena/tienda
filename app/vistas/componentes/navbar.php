@@ -1,21 +1,15 @@
     <header>
         <div class="container">
             <a class="logo" href="<?php echo RUTA_URL ?>">CUC Store</a>
+<?php if(isset($datos['cliente'])):?>
             <nav>
                 <ul class="nav-links">
                     <li>
-                        <a href="#">Celulares</a>
-                    </li>
-                    <li>
-                        <a href="#">Computadores</a>
-                    </li>
-                    <li>
-                        <a href="#">Accesorios</a>
+                        <a><?php echo $datos['cliente'] ?></a>
                     </li>
                 </ul>
             </nav>
-<?php if($datos):?>
-            <a><?php echo $datos['cliente'] ?></a>
+            <a id="vercarro" class="cta" href="#">Carrito</a>
             <a class="cta" href="<?php echo RUTA_URL ?>/logout">Salir</a>
 <?php else:?>
             <a class="cta" href="<?php echo RUTA_URL ?>/login">Ingreso</a>

@@ -14,7 +14,6 @@
 .cuerpo{
     width: 80%;
     height: 100vh;
-    background-color: #9d233e;
 }
 
 li{
@@ -39,4 +38,10 @@ li.list-item{
 
 .list-item.selected, .list-item:hover:not(.c){
     background-color: #9d233e;
+}
+
+.cuerpo-item{
+    display: none;
+    color: #ffff;
+    height: 90vh;
 }

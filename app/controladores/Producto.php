@@ -6,7 +6,7 @@
         }
 
         public function registro(){
-            $res = $this->subirImagen(date("YmdHis"), 'producto');
+            $res = $this->subirImagen(date("YmdHis"), 'productos');
     
             if($res['estado']){  
                 $this->m = $this->modelo('Inventario');

@@ -4,104 +4,52 @@
 <body>
 <?php include_once(RUTA_APP.'/vistas/componentes/navbar.php')?>
 
+    <div class="container alert">
+        <h1 id="alerta">A</h1>
+    </div>
+
     <div class="container"> 
         <div class="productos">
+            <?php foreach($datos['productos'] as $key): ?>
             <div class="producto-item">
                 <div class="producto-nom">
-                    <p>nombre producto</p>
+                    <p><?php echo $key->nombre?></p>
                 </div>
                 <div class="producto-img">
-                    <img src="img/1.jpg">
+                    <img src="img/productos/<?php echo $key->imagen?>">
                 </div>
                 <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
+                    <p>Precio: $<?php echo $key->precio?></p>
+                    <button id="<?php echo $key->id ?>" class="cta carro">Añadir al carrito</button>
                     <button class="cta">Detalle</button>
                 </div>
                 
             </div>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p>nombre producto</p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/2.jpg">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
-                    <button class="cta">Detalle</button>
-                </div>
-                
-            </div>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p>nombre producto</p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/3.jpg">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
-                    <button class="cta">Detalle</button>
-                </div>
-                
-            </div>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p>nombre producto</p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/1.jpg">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
-                    <button class="cta">Detalle</button>
-                </div>
-                
-            </div>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p>nombre producto</p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/2.jpg">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
-                    <button class="cta">Detalle</button>
-                </div>
-                
-            </div>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p>nombre producto</p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/3.jpg">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $500.000</p>
-                    <button class="cta">Añadir al carrito</button>
-                    <button class="cta">Detalle</button>
-                </div>
-                
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
-<script src="<?php echo RUTA_URL?>/js/jquery-3.5.1.min.js"></script>
-<script> 
-$('.producto-item').hover(
-    function() {
-        $(this).find('.producto-desc').addClass( "hover" );
-    }, function() {
-        $(this).find('.producto-desc').removeClass( "hover" );
-    }
-); 
 
-</script>
+    <div class="carrito">
+        <h2>Carro de compras</h2>
+    <table id="tablaCarrito">
+        <thead class="titulo">
+            <tr>
+                <th>Producto</th>
+                <th>Valor</th>
+                <th>Cant.</th>
+                <th>Total.</th>
+                <th>+/-</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    
+        <button id="pedido" class="cta red">Hacer Pedido</button>
+    </div>
+<script src="<?php echo RUTA_URL?>/js/jquery-3.5.1.min.js"></script>
+<script src="<?php echo RUTA_URL?>/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo RUTA_URL?>/js/home.js"></script>
 </body>
 </html>

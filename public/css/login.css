@@ -22,45 +22,6 @@
 	margin-bottom: 30px;
 }
 
-.login-page form {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.login-page form input{
-    width: 250px;
-    height: 35px;
-    margin: 8px;
-    background: rgb(218, 218, 218);
-    border: none;
-    padding-left: 10px;
-    outline: none;
-    transition: all .4s;
-
-}
-
-.login-page form input:focus {
-	background: rgb(194, 194, 194);
-}
-
-.login-page form .btn {
-	width: 250px;
-	height: 35px;
-	margin: 8px;
-	background: #927a2a;
-	color: #e2e2e2;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	transition: all .4s;
-}
-
-.login-page form .btn:hover {
-	background: #9d233e;
-}
-
 .login-page span{
     color: #927a2a;
     cursor: pointer;
