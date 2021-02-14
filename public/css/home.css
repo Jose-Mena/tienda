@@ -63,7 +63,7 @@ td, th {
 
 .producto-item .producto-img{
     width: 100%;
-    height: 15rem;
+    /*height: 15rem;*/
     overflow: hidden;
 }
 
@@ -108,6 +108,10 @@ td, th {
     margin-top: 1em;
 }
 
+.carrito .cta.vercarro{
+    font-size: 2rem;
+}
+
 .cta.red{
     padding: 1rem;
     background-color: #ecbd22;
@@ -127,6 +131,9 @@ td, th {
 
 }
 
+.blanco{
+    color: #fff;
+}
 
 @media (min-width: 600px){
     .producto-item{

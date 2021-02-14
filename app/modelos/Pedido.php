@@ -44,9 +44,12 @@
 			}
 		}
 
-		public function productos(){
-			$this->db->query("SELECT id, nombre, precio, cantidad, imagen FROM inventario
-							WHERE cantidad>0");
+		public function pedidos($c){
+			$this->db->query("SELECT fecha, id, subtotal, impuesto, total FROM pedidos
+								WHERE cliente=:c");
+				
+				$this->db->bind(':c',$c);
+
 			$R = $this->db->registros();
 			if($R==[]){
 				return false;
@@ -55,11 +58,14 @@
 			}
 		}
 
-		public function producto($Id){
-			$this->db->query("SELECT nombre, precio, cantidad, imagen FROM inventario
-						WHERE id=:id");
-			$this->db->bind(':id',$Id);
-			return $this->db->registro();
+		public function detallepedido($id){
+			$this->db->query("SELECT i.nombre AS nombre, v.valor AS precio, v.cantidad 
+							FROM pedidos p 
+							INNER JOIN ventas v ON p.id=v.pedido 
+							INNER JOIN inventario i ON i.id=v.producto
+							WHERE p.id=:id");
+			$this->db->bind(':id',$id);
+			return $this->db->registros();
 		}
 	}
 ?>

@@ -132,5 +132,54 @@
             echo $json;
         }
 
+        public function pedidos(){
+            $datosTabla = array(
+                'data' => array()
+            );
+
+            $pedidos = $this->modelo('Pedido')->pedidos($_SESSION['cliente']->identificacion);
+            if($pedidos){
+                foreach($pedidos as $l => $k){
+                    $detalle = '<button class="cta" onclick="detalle('.$k->id.')">Detalles</button>';
+                    array_push($datosTabla['data'], array($k->id, $k->fecha, $k->subtotal, $k->impuesto, $k->total, $detalle));
+                }
+            }
+
+            $json = json_encode($datosTabla);
+
+            echo $json;
+        }
+
+        public function detallepedido($id=false){
+            $datosTabla = array(
+                'data' => array()
+            );
+            if($id){
+                $detalles = $this->modelo('Pedido')->detallepedido($id);
+
+                $total = 0;
+                foreach($detalles as $l => $k){
+                    array_push($datosTabla['data'], array($k->nombre, $k->precio, $k->cantidad, ($k->cantidad*$k->precio)));
+                    $total+=($k->cantidad*$k->precio);
+                }
+
+                $subtotal = ($total-($total*0.16));
+                $impuesto = $total*0.16;
+
+                $iTemCad = time() + (60 * 60);
+                setcookie('subtotal', serialize($subtotal), $iTemCad);
+                setcookie('impuesto', serialize($impuesto), $iTemCad);
+                setcookie('total', serialize($total), $iTemCad);
+
+                array_push($datosTabla['data'], array('....', '....', '....', '....'));
+                array_push($datosTabla['data'], array('Sub Total', '', '', '$'.number_format($subtotal,2)));
+                array_push($datosTabla['data'], array('Impuesto', '', '', '$'.number_format($impuesto,2)));
+                array_push($datosTabla['data'], array('Total', '', '', '$'.number_format($total,2)));
+            }
+            $json = json_encode($datosTabla);
+
+            echo $json;
+        }
+
     }
 ?>

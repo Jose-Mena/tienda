@@ -45,7 +45,7 @@ $('.carro').click(function() {
     });
 }); 
 
-$('#vercarro').click(function(){
+$('.vercarro').click(function(){
     $('.carrito').toggleClass('vercarrito');
 });
 
@@ -57,6 +57,7 @@ $('#pedido').click(function(){
         success: function(res) {
             if (res.success == true) {
                 $('#alerta').html(res.mensaje);
+                window.location.replace("pedidos");
             } else {
                 $('#alerta').html(res.mensaje);
                 $('.carrito').removeClass('vercarrito');

@@ -5,11 +5,15 @@
             <nav>
                 <ul class="nav-links">
                     <li>
-                        <a><?php echo $datos['cliente'] ?></a>
+                        <a href="<?php echo RUTA_URL ?>/pedidos">Mis Pedidos</a>
+                    </li>
+                    <li>
+                        <a class="vercarro" href="#">Carrito</a>
                     </li>
                 </ul>
             </nav>
-            <a id="vercarro" class="cta" href="#">Carrito</a>
+            
+            <a>Hola, <?php echo $datos['cliente'] ?></a>
             <a class="cta" href="<?php echo RUTA_URL ?>/logout">Salir</a>
 <?php else:?>
             <a class="cta" href="<?php echo RUTA_URL ?>/login">Ingreso</a>

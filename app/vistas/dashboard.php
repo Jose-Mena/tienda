@@ -9,7 +9,6 @@
                 <li class="titulo-item">Inventario</li>
                 <li href="#nuevo" class="list-item">Nuevo Producto</a></li>
                 <li href="#productos" class="list-item">Productos</li>
-                <li href="#terminados" class="list-item">Productos Terminados</li>
                 <li class="titulo-item">Preferencias</li>
                 <li class="list-item c"><a class="cta" href="<?php echo RUTA_URL?>/logout">Cerrar Sesion</a></li>
             </ul>
@@ -29,16 +28,24 @@
 
                 </div>
             <div id="productos" class="cuerpo-item container">
-                productos
-            </div>
-            <div id="terminados" class="cuerpo-item container">
-                termjnados
-            </div>
+                <table id="todosproductos" style="width: 50%">
+                    <thead class="productos">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 <script src="<?php echo RUTA_URL?>/js/jquery-3.5.1.min.js"></script>
+<script src="<?php echo RUTA_URL?>/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo RUTA_URL?>/js/dashboard.js"></script>
 
 </body>

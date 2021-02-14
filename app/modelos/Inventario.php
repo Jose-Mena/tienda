@@ -35,6 +35,16 @@
 			}
 		}
 
+		public function allproductos(){
+			$this->db->query("SELECT id, nombre, precio, cantidad FROM inventario");
+			$R = $this->db->registros();
+			if($R==[]){
+				return false;
+			}else{
+				return $R;
+			}
+		}
+
 		public function producto($Id){
 			$this->db->query("SELECT nombre, precio, cantidad, imagen FROM inventario
 						WHERE id=:id");

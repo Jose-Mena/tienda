@@ -25,5 +25,22 @@
             echo $json;
         }
 
+        public function allproductos(){
+            $datosTabla = array(
+                'data' => array()
+            );
+
+            $productos = $this->modelo('Inventario')->allproductos();
+            if($productos){
+                foreach($productos as $l => $k){
+                    array_push($datosTabla['data'], array($k->nombre, $k->precio, $k->cantidad));
+                }
+            }
+
+            $json = json_encode($datosTabla);
+
+            echo $json;
+        }
+
     }
 ?>

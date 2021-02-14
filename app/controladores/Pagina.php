@@ -37,6 +37,17 @@
             }
         }
 
+        public function pedidos($id=false){
+            if($id){
+
+            }else{
+                if(isset($_SESSION['cliente'])){
+                    $datos['cliente']=$_SESSION['cliente']->nombre.' '.$_SESSION['cliente']->apellido;
+                 }
+                $this->vista('pedidos', $datos);
+            }
+        }
+
         public function logout(){
             session_unset();
             session_destroy();

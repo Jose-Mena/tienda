@@ -8,28 +8,37 @@
         <h1 id="alerta">A</h1>
     </div>
 
-    <div class="container"> 
-        <div class="productos">
-<?php if($datos['productos']): ?>
-            <?php foreach($datos['productos'] as $key): ?>
-            <div class="producto-item">
-                <div class="producto-nom">
-                    <p><?php echo $key->nombre?></p>
-                </div>
-                <div class="producto-img">
-                    <img src="img/productos/<?php echo $key->imagen?>">
-                </div>
-                <div class="producto-desc">
-                    <p>Precio: $<?php echo $key->precio?></p>
-                    <button id="<?php echo $key->id ?>" class="cta carro">Añadir al carrito</button>
-                </div>
-                
-            </div>
-            <?php endforeach; ?>
-<?php else: ?>
-                <h2>Los sentimos, actualmente no hay productos disponibles</h2>
-<?php endif; ?>
-        </div>
+    <h2 class="blanco">Mis Pedidos</h2>
+    <div class="container blanco"> 
+        <table id="mispedidos">
+            <thead class="titulo">
+                <tr>
+                    <th>Referencia</th>
+                    <th>Fecha</th>
+                    <th>SubTotal</th>
+                    <th>Impuesto</th>
+                    <th>Total</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <table id="detalle" style="display: none">
+        <thead class="titulo">
+            <tr>
+                <th>Producto</th>
+                <th>Valor</th>
+                <th>Cant.</th>
+                <th>Total.</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
     </div>
 
     <div class="carrito">
@@ -55,5 +64,6 @@
 <script src="<?php echo RUTA_URL?>/js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo RUTA_URL?>/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo RUTA_URL?>/js/home.js"></script>
+<script src="<?php echo RUTA_URL?>/js/pedidos.js"></script>
 </body>
 </html>

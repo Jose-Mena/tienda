@@ -1,3 +1,13 @@
+$('#todosproductos').dataTable({
+    ajax: "Producto/allproductos",
+    "searching": false,
+    "bPaginate": false,
+    "pagingType": "simple",
+    "bInfo" : false,
+    "order": [],"language": {
+        "emptyTable": "No hay productos"
+      }
+});
 
 $(".list-item").click(function(){
     $('.list-item').removeClass('selected');
@@ -48,3 +58,4 @@ $('#btnNuevo').click(function(){
         });
     }
 });
+
