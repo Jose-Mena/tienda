@@ -51,6 +51,7 @@
     </table>
     
         <button id="pedido" class="cta red">Hacer Pedido</button>
+        <button id="vaciar" class="cta rod">Vaciar Carrito</button>
     </div>
 <script src="<?php echo RUTA_URL?>/js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo RUTA_URL?>/js/jquery.dataTables.min.js"></script>

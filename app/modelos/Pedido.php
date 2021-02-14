@@ -46,7 +46,7 @@
 
 		public function pedidos($c){
 			$this->db->query("SELECT fecha, id, subtotal, impuesto, total FROM pedidos
-								WHERE cliente=:c");
+								WHERE cliente=:c ORDER BY id DESC");
 				
 				$this->db->bind(':c',$c);
 

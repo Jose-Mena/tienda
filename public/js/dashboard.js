@@ -10,6 +10,7 @@ $('#todosproductos').dataTable({
 });
 
 $(".list-item").click(function(){
+    $('#todosproductos').DataTable().ajax.reload();
     $('.list-item').removeClass('selected');
     $(this).addClass('selected');
     $('.cuerpo-item').hide();
@@ -40,6 +41,7 @@ $('#btnNuevo').click(function(){
             dataType: 'JSON',
             success: function(res) {
                 if (res.success == true) {
+                    $('#todosproductos').DataTable().ajax.reload();
                     $('#alerta').html('Produto Registrado.');
                     $("#frmRegistro")[0].reset();
                     

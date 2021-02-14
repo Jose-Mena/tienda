@@ -115,13 +115,20 @@ td, th {
 .cta.red{
     padding: 1rem;
     background-color: #ecbd22;
-    border:none;
     font-size: 1rem;
-    border-radius: 50px;
-    transition: .3s ease;
     position: absolute;
     left: 50%;
-    bottom: 10vh;
+    bottom: 12vh;
+    transform: translate(-50%, 0);
+}
+
+.cta.rod{    
+    padding: 1rem;
+    background-color: #ecbd22;
+    font-size: 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 2vh;
     transform: translate(-50%, 0);
 }
 

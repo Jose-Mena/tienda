@@ -99,37 +99,47 @@
                 $aCarrito = [];
             }
 
-            if(count($aCarrito)<1){
-                $json = json_encode(array('success'=>false, 'mensaje'=>'No hay productos en el carrito.'));
-            }else{
-            $this->pedido = $this->modelo('Pedido');
-                $subtotal = unserialize($_COOKIE['subtotal']);
-                $impuesto  = unserialize($_COOKIE['impuesto']);
-                $total = unserialize($_COOKIE['total']);
-                $fecha = $this->datetimeNow();
-
-                $pedido = $this->pedido->nuevoPedido($_SESSION['cliente']->identificacion, $fecha, $subtotal, $impuesto, $total);
-            
-                if($pedido){
-                    $this->producto = $this->modelo('Inventario');
-                    foreach($aCarrito as $k => $v){
-                        $this->pedido->nuevoProducto($k, $v['cantidad'], $pedido, $v['precio']);
-
-                        $cantidad = $this->producto->producto($k);
-                        $nuevaantidad = ($cantidad->cantidad - $v['cantidad']);
-
-                        $this->producto->actualizarCantidad($k,$nuevaantidad);
-                    }
-
-                    setcookie('carrito', serialize([]), time() + (60 * 60));
-                    $json = json_encode(array('success'=>true, 'mensaje'=>'Pedido Realizado.'));
+            if(isset($_SESSION['cliente'])){
+                if(count($aCarrito)<1){
+                    $json = json_encode(array('success'=>false, 'mensaje'=>'No hay productos en el carrito.'));
                 }else{
-                    $json = json_encode(array('success'=>false, 'mensaje'=>'No hemos podido realizar el pedido.'));
+                $this->pedido = $this->modelo('Pedido');
+                    $subtotal = unserialize($_COOKIE['subtotal']);
+                    $impuesto  = unserialize($_COOKIE['impuesto']);
+                    $total = unserialize($_COOKIE['total']);
+                    $fecha = $this->datetimeNow();
+
+                    $pedido = $this->pedido->nuevoPedido($_SESSION['cliente']->identificacion, $fecha, $subtotal, $impuesto, $total);
+                
+                    if($pedido){
+                        $this->producto = $this->modelo('Inventario');
+                        foreach($aCarrito as $k => $v){
+                            $this->pedido->nuevoProducto($k, $v['cantidad'], $pedido, $v['precio']);
+
+                            $cantidad = $this->producto->producto($k);
+                            $nuevaantidad = ($cantidad->cantidad - $v['cantidad']);
+
+                            $this->producto->actualizarCantidad($k,$nuevaantidad);
+                        }
+
+                        setcookie('carrito', serialize([]), time() + (60 * 60));
+                        $json = json_encode(array('success'=>true, 'mensaje'=>'Pedido Realizado.'));
+                    }else{
+                        $json = json_encode(array('success'=>false, 'mensaje'=>'No hemos podido realizar el pedido.'));
+                    }
                 }
-            
+            }else{
+                $json = json_encode(array('success'=>true, 'mensaje'=>'Debe ingresar para realizar el pedido.'));
             }
 
             echo $json;
+        }
+
+        public function vaciar(){
+            setcookie('carrito', serialize([]), time() + (60 * 60));
+            $json = json_encode(array('success'=>true, 'mensaje'=>'Carrito Vaceado.'));
+            echo $json;
+
         }
 
         public function pedidos(){

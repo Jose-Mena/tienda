@@ -16,7 +16,16 @@
             <a>Hola, <?php echo $datos['cliente'] ?></a>
             <a class="cta" href="<?php echo RUTA_URL ?>/logout">Salir</a>
 <?php else:?>
+<?php if(!isset($datos['login'])): ?>
+            <nav>
+                <ul class="nav-links">
+                    <li>
+                        <a class="vercarro" href="#">Carrito</a>
+                    </li>
+                </ul>
+            </nav>
             <a class="cta" href="<?php echo RUTA_URL ?>/login">Ingreso</a>
+<?php endif; ?>
 <?php endif; ?>
         </div>
     </header>

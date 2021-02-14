@@ -15,7 +15,8 @@
 
         public function login(){
             if(!isset($_SESSION['cliente'])){
-                $this->vista('login', NULL);
+                $datos['login'] = true;
+                $this->vista('login', $datos);
             }else{
                 header('Location: '.RUTA_URL);
             }	
@@ -23,7 +24,8 @@
 
         public function admin(){
             if(!isset($_SESSION['admin'])){
-                $this->vista('admin', NULL);
+                $datos['login'] = true;
+                $this->vista('admin', $datos);
             }else{
                 header('Location: '.RUTA_URL.'/dashboard');
             }
@@ -38,8 +40,8 @@
         }
 
         public function pedidos($id=false){
-            if($id){
-
+            if(!isset($_SESSION['cliente'])){
+                header('Location: '.RUTA_URL.'/login');
             }else{
                 if(isset($_SESSION['cliente'])){
                     $datos['cliente']=$_SESSION['cliente']->nombre.' '.$_SESSION['cliente']->apellido;

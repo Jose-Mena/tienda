@@ -11,7 +11,7 @@
  Target Server Version : 100417
  File Encoding         : 65001
 
- Date: 14/02/2021 17:48:14
+ Date: 14/02/2021 18:40:49
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `administradores`  (
 -- ----------------------------
 -- Records of administradores
 -- ----------------------------
-INSERT INTO `administradores` VALUES ('Jose Mena', 'josuedrive1998@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+INSERT INTO `administradores` VALUES ('Jose Mena', 'admin@admin.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
 
 -- ----------------------------
 -- Table structure for clientes
@@ -49,16 +49,7 @@ CREATE TABLE `clientes`  (
 -- ----------------------------
 -- Records of clientes
 -- ----------------------------
-INSERT INTO `clientes` VALUES ('Jose', 'Altamirano', '1104435362', 'jose@g.com', '3116843679');
-INSERT INTO `clientes` VALUES ('nnnn', 'aaaa', '111', 'd@gmail.com', '22224444444444');
-INSERT INTO `clientes` VALUES ('asdasd', 'sdada', '1111', 'joses@g.com', '234234234234');
-INSERT INTO `clientes` VALUES ('erwerwer', 'werwer', '1113', 's@gmial.com', '453453534534534');
-INSERT INTO `clientes` VALUES ('defsdf', 'sdfsd', '123', 'asdasd@g.com', '564645645645645');
-INSERT INTO `clientes` VALUES ('Jose', 'Mena', '123456789', 'josuedrive@gmail.com', '123123123123131');
-INSERT INTO `clientes` VALUES ('Jose', 'Mena', '3222222', 'josuedrivwe@gmail.com', '345345345345345');
-INSERT INTO `clientes` VALUES ('dfsdfsdf', 'dfsfsdf', '324234', 's@df.co', '235424534534535');
-INSERT INTO `clientes` VALUES ('rtrweter', 'ertert', '34324234', 's@f.com', '32423423423423');
-INSERT INTO `clientes` VALUES ('Jose', 'Mena', '544', 'asdasdas@gmail.com', '54545454545');
+INSERT INTO `clientes` VALUES ('Jose', 'Mena', '12344518', 'jjluismena@gmail.com', '3017746522');
 
 -- ----------------------------
 -- Table structure for inventario
@@ -71,14 +62,14 @@ CREATE TABLE `inventario`  (
   `cantidad` int NULL DEFAULT NULL,
   `imagen` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of inventario
 -- ----------------------------
-INSERT INTO `inventario` VALUES (1, 'Teclado', '50000', 0, '1.jpg');
-INSERT INTO `inventario` VALUES (4, 'wwww', '2222', 0, 'img_20210214134824.png');
-INSERT INTO `inventario` VALUES (5, 'Canes', '6500', 0, 'img_20210214212535.PNG');
+INSERT INTO `inventario` VALUES (6, 'Teclado Gamer', '5000', 5, 'img_20210215002453.jpg');
+INSERT INTO `inventario` VALUES (7, 'Teclado', '25000', 23, 'img_20210215002551.jpg');
+INSERT INTO `inventario` VALUES (8, 'Cuarteto de teclados', '80000', 3, 'img_20210215002642.jpg');
 
 -- ----------------------------
 -- Table structure for pedidos
@@ -92,11 +83,14 @@ CREATE TABLE `pedidos`  (
   `impuesto` double NULL DEFAULT NULL,
   `total` double NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pedidos
 -- ----------------------------
+INSERT INTO `pedidos` VALUES (41, 12344518, '2021-02-15 00:36:28', 8400, 1600, 10000);
+INSERT INTO `pedidos` VALUES (42, 12344518, '2021-02-15 00:37:14', 21000, 4000, 25000);
+INSERT INTO `pedidos` VALUES (43, 12344518, '2021-02-15 00:37:27', 168000, 32000, 200000);
 
 -- ----------------------------
 -- Table structure for ventas
@@ -116,5 +110,10 @@ CREATE TABLE `ventas`  (
 -- ----------------------------
 -- Records of ventas
 -- ----------------------------
+INSERT INTO `ventas` VALUES (6, 2, 5000, 41);
+INSERT INTO `ventas` VALUES (7, 1, 25000, 42);
+INSERT INTO `ventas` VALUES (6, 3, 5000, 43);
+INSERT INTO `ventas` VALUES (7, 1, 25000, 43);
+INSERT INTO `ventas` VALUES (8, 2, 80000, 43);
 
 SET FOREIGN_KEY_CHECKS = 1;

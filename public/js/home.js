@@ -57,10 +57,38 @@ $('#pedido').click(function(){
         success: function(res) {
             if (res.success == true) {
                 $('#alerta').html(res.mensaje);
-                window.location.replace("pedidos");
+                setTimeout(function(){
+                    window.location.replace("pedidos");
+                }, 1500)
+                
             } else {
                 $('#alerta').html(res.mensaje);
                 $('.carrito').removeClass('vercarrito');
+            }
+        },
+        error: function() {
+            $('#alerta').html('Estamos sufirendo dificultades, por favor intente más tarde.');
+        },
+        complete: function(){
+            $('.alert').addClass("view");
+            setTimeout(function(){
+                $('.alert').removeClass("view");
+            }, 2000)
+
+            $('#tablaCarrito').DataTable().ajax.reload();
+        }
+    });
+});
+
+$('#vaciar').click(function(){
+    $.ajax({
+        url: 'Carrito/vaciar',
+        method: 'POST',
+        dataType: 'JSON',
+        success: function(res) {
+            if (res.success == true) {
+                $('#alerta').html(res.mensaje); 
+                $('.carrito').removeClass('vercarrito');            
             }
         },
         error: function() {
