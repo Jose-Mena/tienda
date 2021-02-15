@@ -11,7 +11,7 @@
  Target Server Version : 100417
  File Encoding         : 65001
 
- Date: 14/02/2021 18:40:49
+ Date: 14/02/2021 18:58:31
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes`  (
   `nombre` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `identificacion` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `identificacion` int NOT NULL,
   `correo` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `celular` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`identificacion`) USING BTREE
@@ -49,7 +49,7 @@ CREATE TABLE `clientes`  (
 -- ----------------------------
 -- Records of clientes
 -- ----------------------------
-INSERT INTO `clientes` VALUES ('Jose', 'Mena', '12344518', 'jjluismena@gmail.com', '3017746522');
+INSERT INTO `clientes` VALUES ('Jose', 'Mena', 12344518, 'jjluismena@gmail.com', '3017746522');
 
 -- ----------------------------
 -- Table structure for inventario
@@ -82,7 +82,9 @@ CREATE TABLE `pedidos`  (
   `subtotal` double NULL DEFAULT NULL,
   `impuesto` double NULL DEFAULT NULL,
   `total` double NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `cliente`(`cliente`) USING BTREE,
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`identificacion`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
