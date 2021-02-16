@@ -54,7 +54,7 @@ td, th {
 .producto-item{
     position: relative;
     box-sizing: border-box;
-    width: calc(50% - 2em);
+    width: calc(100% - 2em);
     overflow: hidden;
     border: 2px solid #fff;
     margin: 1em;

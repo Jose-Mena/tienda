@@ -57,7 +57,7 @@
 						WHERE id=:id");
 			$this->db->bind(':id',$Id);
 			$this->db->bind(':cantidad',$cantidad);
-			return $this->db->registro();
+			return $this->db->execute();
 		}
 	}
 ?>
